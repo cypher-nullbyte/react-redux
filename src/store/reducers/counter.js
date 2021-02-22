@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actions';
+import { updateObject } from '../utility';
 
 const initialState={
     counter:0
@@ -18,10 +19,11 @@ const reducer=(state=initialState,action)=>
                 counter:state.counter-1
             }
         case actionTypes.ADD:
-            return {
-                ...state,
-                counter:state.counter+action.val
-            }
+            return updateObject(state,{counter:state.counter+action.val}); // this utility can be applied to all others as well.
+            // return {
+            //     ...state,
+            //     counter:state.counter+action.val
+            // }
         case actionTypes.SUBTRACT:
             return {
                 ...state,
